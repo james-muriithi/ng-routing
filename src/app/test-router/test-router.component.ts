@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Quote } from '@angular/compiler';
+import { Quote } from '../quote.model';
 import { TestService } from '../test.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { TestService } from '../test.service';
 })
 export class TestRouterComponent implements OnInit {
   loading: Boolean = false;
-  public quotes!: Quote;
+  quotes!: Quote[];
 
   constructor(private testService: TestService) {}
 
   ngOnInit() {
     this.loading = true;
     this.testService.getData().subscribe((quotes) => {
-      // this.quotes = quotes;
+      this.quotes = quotes;
       this.loading = false;
     });
   }

@@ -1,7 +1,18 @@
 <div class="">
-    <div class="donut" *ngIf="loading; else quotes"></div>
+    <div class="donut" *ngIf="loading; else quotes_section"></div>
 
-    <ng-template #quotes>
-
+    <ng-template #quotes_section>
+        <div class="row mt-3">
+            <div class="col-md-4 mb-3" *ngFor="let quote of quotes">
+                <div class="h-100 card shadow p-3">
+                    <a [routerLink]="['/test-param', quote.id]" class="">
+                        {{quote.quote}}
+                    </a>
+                    <div class="pt-3">
+                        <small>{{quote.author}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ng-template>
 </div>
